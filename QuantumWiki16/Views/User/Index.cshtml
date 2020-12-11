@@ -1,0 +1,30 @@
+﻿@model IQueryable<User>
+
+<h2>Index page</h2>
+<div>
+    @foreach (User u in Model)
+    {
+        <table>
+            <tr>
+                <th> Name: </th>
+                <td> @u.Name </td>
+            </tr>
+            <tr>
+                <th> Email: </th>
+                <td> @u.Email </td>
+            </tr>
+            <tr>
+                <th> Member: </th>
+                <td> @u.Member </td>
+            </tr>
+            <tr>
+                <th> Password </th>
+                <td> @u.Password </td>
+            </tr>
+        </table>
+    }
+</div>
+<div>
+    <button><a asp-controller="Home" asp-action="Index" />Return the WikiHome</button>
+
+</div>

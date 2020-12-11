@@ -1,0 +1,41 @@
+﻿@model User
+
+
+    <form asp-action="Create" method="post">
+        <table>
+            <tr>
+                <th> Name: </th>
+                <td> <input type="text" asp-for="Name" /> </td>
+            </tr>
+            <tr>
+                <th> Email: </th>
+                <td> <input type="email" asp-for="Email" /> </td>
+            </tr>
+            <tr>
+                <th> Password: </th>
+                <td> <input type="password" asp-for="Password" placeholder="Your Password"  class="form-control" /> </td>
+            </tr>
+            <tr>
+                <th> Confirm Password: </th>
+                <td> <input type="password" asp-for="Password" placeholder="Your Password"  class="form-control" /> </td>
+            </tr>
+            <tr>
+                <th> Become a member?: </th>
+                <td>
+                    <div class="form-group">
+                        <!--                        <label asp-for="Member">Do you?: </label>  -->
+                        <select asp-for="Member" class="form-control">
+                            <option value=""> Choose An Option </option>
+                            <option value="true"> Yes </option>
+                            <option value="false"> No </option>
+                            <option value="false"> Maybe Later </option>
+                        </select>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td> <input type="submit" value="AddUser" /> </td>
+            </tr>
+        </table>
+    </form>

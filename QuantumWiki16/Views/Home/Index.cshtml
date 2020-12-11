@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewData["Title"] = "QuantumWiki Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-3">Welcome to QuantumWiki</h1>
+    <h4 class="bg bg-light">A site by Greg Bystroff</h4>
+    <div>
+        To add a user, <button><a asp-controller="User" asp-action="Login"> Login </a></button> @*controller name and method  must be spelled correctly *@
+    </div>
+    <div>
+        To see the entire, <button><a asp-controller="User" asp-action="Index"> List of users </a></button>@*controller name and method  must be spelled correctly *@
+    </div>
+    <div>
+        You can, <button><a asp-controller="User" asp-action="Search"> Search </a> </button>for a user by name. @*controller name and method  must be spelled correctly *@
+    </div>
+
+    <h4>Use the buttons in the header for now.</h4>
+</div>

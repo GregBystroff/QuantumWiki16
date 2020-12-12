@@ -1,0 +1,49 @@
+#   updated, almost completed user class and functionality.
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is up to date with 'origin/master'.
+#
+# Changes to be committed:
+#	modified:   .vs/QuantumWiki16/DesignTimeBuild/.dtbcache.v2
+#	modified:   .vs/QuantumWiki16/v16/.suo
+#	modified:   QuantumWiki16/Controllers/UserController.cs
+#	modified:   QuantumWiki16/Models/EfUserRepository.cs
+#	modified:   QuantumWiki16/Models/IUserRepository.cs
+#	modified:   QuantumWiki16/Models/User.cs
+#	modified:   QuantumWiki16/Views/Home/Index.cshtml
+#	modified:   QuantumWiki16/Views/Shared/_Layout.cshtml
+#	modified:   QuantumWiki16/Views/User/Create.cshtml
+#	new file:   QuantumWiki16/Views/User/Edit.cshtml
+#	modified:   QuantumWiki16/Views/User/Index.cshtml
+#	modified:   QuantumWiki16/Views/User/Login.cshtml
+#	modified:   QuantumWiki16/Views/_ViewImports.cshtml
+#	modified:   QuantumWiki16/bin/Debug/netcoreapp3.1/QuantumWiki16.Views.dll
+#	modified:   QuantumWiki16/bin/Debug/netcoreapp3.1/QuantumWiki16.Views.pdb
+#	modified:   QuantumWiki16/bin/Debug/netcoreapp3.1/QuantumWiki16.dll
+#	modified:   QuantumWiki16/bin/Debug/netcoreapp3.1/QuantumWiki16.pdb
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/QuantumWiki16.RazorCoreGenerate.cache
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/QuantumWiki16.Views.dll
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/QuantumWiki16.Views.pdb
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/QuantumWiki16.csproj.FileListAbsolute.txt
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/QuantumWiki16.csprojAssemblyReference.cache
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/QuantumWiki16.dll
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/QuantumWiki16.pdb
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/Home/Index.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/Home/Privacy.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/Shared/Error.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_Layout.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/Shared/_ValidationScriptsPartial.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/Tutorial/Index.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/User/Create.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/User/Detail.cshtml.g.cs
+#	new file:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/User/Edit.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/User/Index.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/User/Login.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/User/Search.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/_ViewImports.cshtml.g.cs
+#	modified:   QuantumWiki16/obj/Debug/netcoreapp3.1/Razor/Views/_ViewStart.cshtml.g.cs
+#	modified:   githubstuff
+#

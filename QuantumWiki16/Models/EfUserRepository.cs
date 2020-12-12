@@ -28,13 +28,13 @@ namespace QuantumWiki16.Models
         {
             try
             {
-                user.Password = encrypt(user.Password);
-                _context.Users.Add(user);
-                _context.SaveChanges();
+                user.Password = encrypt(user.Password);  // this is where it should fail and drop out before adding the user
+                _context.Users.Add(user);  // method in base class of appDbContext
+                _context.SaveChanges();  // same
             }
             catch(Exception ex)
             {
-                user.Id = -1;  // failed to add, that user object gets a bad Id
+                user.Id = -1;  // failed to add, that user object gets a bad Id - will fail to update. Must be deleted and re-entered.
             }
             user.Password = ""; // get rid of pw immediately either way
             return user;
@@ -60,7 +60,7 @@ namespace QuantumWiki16.Models
 
         public User GetUserByEmail(string email)
         {
-            return _context.Users.FirstOrDefault(u => u.Email == email);
+            return _context.Users.Where(u => u.Email == email).FirstOrDefault();
         }  // end get user by email (new key)
 
         public bool Login(User u)
@@ -78,7 +78,7 @@ namespace QuantumWiki16.Models
             {
                 _session.SetInt32("userId", knownUser.Id);
                 _session.SetString("userEmail", knownUser.Email);
-                //if (userIfExists.IsAdmin == true)
+                //if (knownUser.IsAdmin)
                 //{
                 //    _session.SetInt32("userAdmin", 1);
                 //}
@@ -92,14 +92,23 @@ namespace QuantumWiki16.Models
             return false;
         }  // end Login
 
+        public int GetUserBySessionId()
+        {
+            int? currentUserId = _session.GetInt32("userId");
+            if(currentUserId != null)
+            {
+                return currentUserId.Value;
+            }    
+            return -1;
+        }  // end Get user by Session
+
         private string encrypt(string password)  // lowercase local method because its private. Not in Interface.
         {
             SHA256 myHashingVar = SHA256.Create();
             byte[] passwordByteArray = Encoding.ASCII.GetBytes(password);
-            //passwordByteArray[0] += 1;
-            //passwordByteArray[1] += 2;
-            //passwordByteArray[2] += 3;
-            //passwordByteArray[3] += 4;
+            passwordByteArray[0] += 1;
+            passwordByteArray[2] += 1;
+            passwordByteArray[4] += 1;
             byte[] hashedPasswordByteArray = myHashingVar.ComputeHash(passwordByteArray);
             string hashedPassword = "";
             foreach (byte b in hashedPasswordByteArray)
@@ -109,6 +118,19 @@ namespace QuantumWiki16.Models
             return hashedPassword;
         }  // end Encrypt
 
+        public int GetLoggedInUserId()
+        {
+            int? userId = _session.GetInt32("userId");
+            if (userId == null)
+            {
+                return -1;
+            }
+            else
+            {
+                return userId.Value; // Value is an int
+            }
+        }  // end Get Logged in user Id
+
 
         // U p d a t e
 
@@ -117,11 +139,22 @@ namespace QuantumWiki16.Models
             User userToUpdate = _context.Users.SingleOrDefault(u => u.Email == user.Email);
             if (userToUpdate != null)
             {
-                userToUpdate.Name = user.Name;
-                userToUpdate.Password = user.Password;
-                userToUpdate.Member = user.Member;
-                _context.SaveChanges();
+                //                userToUpdate.Id = user.Id;  // key. this will never be necessary. Just written for understanding.
+                try
+                {  // first try to encrypt unknown pw. This is most likely to fail.
+                    user.Password = encrypt(user.Password);  // encrypt before storing. If fails, no other work done.
+                    userToUpdate.Name = user.Name;
+                    userToUpdate.Password = user.Password;
+                    userToUpdate.Member = user.Member;
+                    _context.SaveChanges();
+                }
+                catch
+                {
+                    user.Id = -1;  // set temp user object id to -1 and return it intead. PW likely failed.
+                    return user;
+                }
             }
+            user.Password = ""; // get rid of pw immediately
             return userToUpdate;
         }
 
@@ -137,6 +170,13 @@ namespace QuantumWiki16.Models
             _context.Users.Remove(userToDelete);
             _context.SaveChanges();
             return true;
-        }
+        }  // end Delete user
+
+        public void Logout()
+        {
+            _session.Remove("userEmail");
+            _session.Remove("userId");
+ //           _session.Remove("userAdmin");
+        }  // end Logout
     }
 }

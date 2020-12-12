@@ -83,3 +83,4 @@ C:\Users\Greg\source\repos\QuantumWiki16\QuantumWiki16\obj\Debug\netcoreapp3.1\R
 C:\Users\Greg\source\repos\QuantumWiki16\QuantumWiki16\obj\Debug\netcoreapp3.1\Razor\Views\User\Login.cshtml.g.cs
 C:\Users\Greg\source\repos\QuantumWiki16\QuantumWiki16\obj\Debug\netcoreapp3.1\Razor\Views\User\Index.cshtml.g.cs
 C:\Users\Greg\source\repos\QuantumWiki16\QuantumWiki16\obj\Debug\netcoreapp3.1\Razor\Views\User\Search.cshtml.g.cs
+C:\Users\Greg\source\repos\QuantumWiki16\QuantumWiki16\obj\Debug\netcoreapp3.1\Razor\Views\User\Edit.cshtml.g.cs

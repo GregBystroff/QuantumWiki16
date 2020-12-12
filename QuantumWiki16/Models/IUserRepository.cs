@@ -14,8 +14,7 @@ namespace QuantumWiki16.Models
         public User GetUserById(int id);
         public IQueryable<User> GetUserByKeyword(string keyword);
         public bool Login(User u);
-
-
+        public int GetUserBySessionId();
 
         // U p d a t e
 
@@ -24,6 +23,8 @@ namespace QuantumWiki16.Models
         // D e l e t e
 
         public bool DeleteUser(int id);
+        public void Logout();
+
 
     }
 }

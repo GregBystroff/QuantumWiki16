@@ -20,7 +20,7 @@ namespace QuantumWiki16.Models
         public string   Name        { get; set; }
 
         [MaxLength(128)]
-        [MinLength(2)]
+        [MinLength(6)]
         [Required(ErrorMessage = "A password is required of at least 8 characters.")]
         [UIHint("password")]
         public string   Password    { get; set; } = "";

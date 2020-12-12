@@ -22,11 +22,30 @@
                             <a class="nav-link text-dark" asp-controller="Home" asp-action="Index">QuantumWiki Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-controller="User" asp-action="Login">Login</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-controller="Tutorial" asp-action="Index">Browse as Guest</a>
                         </li>
+                    </ul>
+                </div>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse float-sm-right">
+                    <ul>
+                        @if (UserRepo.GetUserBySessionId() >= 0)
+                        {
+                            <li class="nav-item alert-success">
+                                @UserRepo.GetUserById(UserRepo.GetUserBySessionId()).Email
+                            </li>
+                            <li class="nav-item alert-warning">
+                                <a class="nav-link text-danger" asp-controller="User" asp-action="Edit">Edit Account</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="User" asp-action="Logout">Logout</a>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-controller="User" asp-action="Login">Login</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

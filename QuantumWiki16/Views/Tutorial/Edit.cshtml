@@ -1,0 +1,29 @@
+﻿@model Tutorial
+
+<h3>Edit your Tutorial.</h3>
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="TutId" />
+    <input type="hidden" asp-for="UserId" />
+    <table>
+        <tr>
+            <th> Title: </th>
+            <td> <input type="text" asp-for="Title" /> </td>
+        </tr>
+        <tr>
+            <th> Subject: </th>
+            <td> <textarea asp-for="Subject"> @Model.Subject </textarea></td>
+        </tr>
+        <tr>
+            <th> Link: </th>
+            <td> <input type="url" asp-for="Url" /> </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td> <input class="btn btn-warning" type="submit" value="Save" /> </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td> <a class="btn btn-secondary" asp-controller="Tutorial" asp-action="Index"> Cancel </a> </td>
+        </tr>
+    </table>
+</form>

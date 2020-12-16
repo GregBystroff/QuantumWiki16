@@ -1,0 +1,37 @@
+﻿@model Code
+
+<form method="post">
+    @if (Model != null)
+    {
+        <div>
+            @Model.CodeId
+        </div>
+        <div>
+            @Model.Title
+        </div>
+        <div>
+            @Model.Description
+        </div>
+        <div>
+            @Model.CodeSegment
+        </div>
+        <div>
+            @Model.Id
+        </div>
+    }
+    else
+    {
+        <div>
+            <h5>
+                There was no code segment with that ID number.
+            </h5>
+        </div>
+    }
+    <div>
+        <button><a asp-controller="Code" asp-action="SearchByCodeId" />Search By ID</button>
+    </div>
+    <div>
+        <button><a asp-controller="Code" asp-action="Index" />Return the Code list</button>
+    </div>
+
+</form>

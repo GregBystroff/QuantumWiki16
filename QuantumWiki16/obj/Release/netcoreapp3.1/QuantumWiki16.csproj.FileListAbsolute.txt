@@ -1,0 +1,6 @@
+C:\Users\Greg\source\repos\QuantumWiki16\QuantumWiki16\obj\Release\netcoreapp3.1\QuantumWiki16.AssemblyInfoInputs.cache
+C:\Users\Greg\source\repos\QuantumWiki16\QuantumWiki16\obj\Release\netcoreapp3.1\QuantumWiki16.AssemblyInfo.cs
+C:\Users\Greg\source\repos\QuantumWiki16\QuantumWiki16\obj\Release\netcoreapp3.1\QuantumWiki16.csproj.CoreCompileInputs.cache
+C:\Users\Greg\source\repos\QuantumWiki16\QuantumWiki16\obj\Release\netcoreapp3.1\QuantumWiki16.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Greg\source\repos\QuantumWiki16\QuantumWiki16\obj\Release\netcoreapp3.1\QuantumWiki16.RazorAssemblyInfo.cache
+C:\Users\Greg\source\repos\QuantumWiki16\QuantumWiki16\obj\Release\netcoreapp3.1\QuantumWiki16.RazorAssemblyInfo.cs

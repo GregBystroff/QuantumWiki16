@@ -3,7 +3,9 @@
 
 <div>
     <form method="post">
-        @ViewBag.ErrorMessage
+        <div class="alert-danger">
+            @ViewBag.ErrorMessage
+        </div>
         <br />
         Email/Username: <input asp-for="Email" placeholder="Your EMail Address" title="Email Address" />
         Password: <input asp-for="Password" placeholder="Your Password" title="Password" />

@@ -1,0 +1,37 @@
+﻿@model Tutorial
+
+<form method="post">
+    @if (Model != null)
+    {
+        <div>
+            @Model.TutId
+        </div>
+        <div>
+            @Model.Title
+        </div>
+        <div>
+            @Model.Subject
+        </div>
+        <div>
+            @Model.Url
+        </div>
+        <div>
+            @Model.UserId
+        </div>
+    }
+    else
+    {
+        <div>
+            <h5>
+                There was no tutorial with that ID number.
+            </h5>
+        </div>
+    }
+    <div>
+        <button><a asp-controller="Tutorial" asp-action="SearchById" />Search By ID</button>
+    </div>
+    <div>
+        <button><a asp-controller="Tutorial" asp-action="Index" />Return the Tutorial list</button>
+    </div>
+
+</form>

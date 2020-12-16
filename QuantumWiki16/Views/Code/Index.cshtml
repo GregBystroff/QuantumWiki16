@@ -1,0 +1,66 @@
+﻿@model IQueryable<Code>
+<!-- must implement paging here -->
+
+<h2> Quantum Code </h2>
+@if (UserRepo.GetUserBySessionId() > 0 && UserRepo.IsMember() == true)@*<!-- not a member, nothing to see here -->*@
+{
+    <div>
+        @foreach (Code c in Model)
+        {
+            <table>
+                <tr>
+                    <th> Title: </th>
+                    <td> @c.Title </td>
+                </tr>
+                <tr>
+                    <th> Description: </th>
+                    <td> @c.Description </td>
+                </tr>
+                <tr>
+                    <th> Code: </th>
+                    <td> @c.CodeSegment </td>
+                </tr>
+                <tr>
+                    <th> </th>
+                    <td><a class="alert-primary" asp-controller="Code" asp-action="Edit" asp-route-codeId="@c.CodeId"> Edit </a></td>
+                </tr>
+                <tr>
+                    <th> </th>
+                    <td><a class="alert-danger" asp-controller="Code" asp-action="Delete" asp-route-codeId="@c.CodeId"> Delete </a></td>
+                </tr>
+            </table>
+        }
+    </div>
+    <tr>
+        <th> </th>
+        <td><a class="alert-primary" asp-controller="Code" asp-action="Add"> Add </a></td>
+    </tr>
+
+    <div>
+        <h2>Search Code by: </h2>
+    </div>
+    <div>
+        <button><a asp-controller="Code" asp-action="SearchByTitle" /> Title </button>
+    </div>
+    <div>
+        <button><a asp-controller="Code" asp-action="SearchByDescription" /> Description </button>
+    </div>
+    <div>
+        <button><a asp-controller="Code" asp-action="SearchByCodeId" /> Id </button>
+    </div>
+}
+else
+{
+    <h3> Quantum code is visible only to members. Please sign in or create an account to see more. </h3>
+    <div>
+        <button><a asp-controller="Home" asp-action="Index" /> Return the WikiHome </button>
+    </div>
+}
+<div>
+    <button><a asp-controller="Home" asp-action="Index" /> Return the WikiHome </button>
+</div>
+<div>
+    <button><a asp-controller="Tutorial" asp-action="Index" /> Tutorials Page </button>
+</div>
+
+

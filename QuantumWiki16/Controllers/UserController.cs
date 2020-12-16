@@ -59,15 +59,15 @@ namespace QuantumWiki16.Controllers
         }
 
         [HttpGet]
-        public IActionResult Search()
+        public IActionResult SearchByEmail()
         {
             return View();
         }
 
         [HttpPost]
-        public IActionResult Search(string keyword)
+        public IActionResult SearchByEmail(string keyword)
         {
-            IQueryable<User> someUsers = _repository.GetUserByKeyword(keyword);
+            IQueryable<User> someUsers = _repository.GetUserByName(keyword);
             return View("Index", someUsers);
         }
 
@@ -109,6 +109,12 @@ namespace QuantumWiki16.Controllers
             ViewBag.ErrorMessage = "There was an issue with the Email address or password.";
             return View(u);
         }  // after mon
+
+        public IActionResult LoginAsGuest()
+        {
+            _repository.LoginAsGuest();
+            return RedirectToAction("Index", "Tutorial");
+        }
 
         // Delete
 

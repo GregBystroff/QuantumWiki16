@@ -1,0 +1,31 @@
+﻿@model Tutorial
+
+<h3>Delete your Tutorial.</h3>
+<form asp-action="Delete" method="post">
+    <table>
+        <tr>
+            <th> Title: </th>
+            <td> <h5> @Model.Title </h5></td>
+        </tr>
+        <tr>
+            <th> Subject: </th>
+            <td><h5> @Model.Subject </h5></td>
+        </tr>
+        <tr>
+            <th> Link: </th>
+            <td><a href="@Model.Url"><h5> @Model.Url </h5></a> </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td>
+                <button class="btn btn-danger" type="submit" value="Delete" asp-controller="Tutorial" asp-action="Delete" asp-route-t="@Model">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td> <a class="btn btn-secondary" asp-controller="Tutorial" asp-action="Index"> Cancel </a> </td>
+        </tr>
+    </table>
+</form>

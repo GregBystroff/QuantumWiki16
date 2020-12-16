@@ -1,0 +1,26 @@
+﻿@model string
+
+<form method="post">
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    Search by something in the email of a user.
+                </th>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th>Search string:</th>
+                <td>
+                    <input type="text" asp-controller="User" asp-action="SearchByEmail" />
+                </td>
+            </tr>
+            <tr>
+                <th></th>
+                <td> <input class="btn btn-warning" type="submit" value="Search" /> </td>
+            </tr>
+        </tbody>
+    </table>
+</form>

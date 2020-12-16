@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using Microsoft.AspNetCore.Http;
+using System.Linq;
 
 namespace QuantumWiki16.Models
 {
@@ -8,12 +9,14 @@ namespace QuantumWiki16.Models
         // F i e l d s   &   P r o p e r t i e s
 
         private AppDbContext _context;
+        private ISession _session;
 
         //   C o n s t r u c t o r s
 
-        public EfTutorialRepository(AppDbContext context)
+        public EfTutorialRepository(AppDbContext context, IHttpContextAccessor sessionContext)
         {
             _context = context;
+            _session = sessionContext.HttpContext.Session;  // currently created session
         }
 
         //   M e t h o d s
@@ -55,7 +58,7 @@ namespace QuantumWiki16.Models
 
         public Tutorial UpdateTutorial(Tutorial tut)
         {
-            Tutorial tutorialToUpdate = _context.Tutorials.SingleOrDefault(t => t.TutId == tut.TutId);
+            Tutorial tutorialToUpdate = _context.Tutorials.FirstOrDefault(t => t.TutId == tut.TutId);
             if (tutorialToUpdate != null)
             {
                 tutorialToUpdate.Title = tut.Title;
@@ -71,9 +74,9 @@ namespace QuantumWiki16.Models
         public bool DeleteTutorial(int id)
         {
             Tutorial tutorialToRemove = _context.Tutorials.Find(id);
-            if (tutorialToRemove != null)
+            if (tutorialToRemove == null)
             {
-                return false;
+                return false;  // this id is not in the database
             }
             _context.Tutorials.Remove(tutorialToRemove);
             _context.SaveChanges();

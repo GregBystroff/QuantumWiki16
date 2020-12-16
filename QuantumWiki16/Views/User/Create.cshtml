@@ -5,11 +5,11 @@
         <table>
             <tr>
                 <th> Name: </th>
-                <td> <input type="text" asp-for="Name" /> </td>
+                <td> <input type="text" asp-for="Name" placeholder="guest" value="guest" /> </td>
             </tr>
             <tr>
                 <th> Email: </th>
-                <td> <input type="email" asp-for="Email" /> </td>
+                <td> <input type="email" asp-for="Email" value="guest@quantumwiki.com" /> </td>
             </tr>
             <tr>
                 <th> Password: </th>
@@ -22,7 +22,7 @@
                         <!--                        <label asp-for="Member">Do you?: </label>  -->
                         <select asp-for="Member" class="form-control">
                             <option value=""> Choose An Option </option>
-                            <option value="true"> Yes </option>
+                            <option value="true"> Yes (guest accounts will default to "Maybe Later") </option>
                             <option value="false"> No </option>
                             <option value="false"> Maybe Later </option>
                         </select>

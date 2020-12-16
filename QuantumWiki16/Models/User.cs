@@ -25,7 +25,7 @@ namespace QuantumWiki16.Models
         [UIHint("password")]
         public string   Password    { get; set; } = "";
 
-        public bool?    Member      { get; set; }
+        public bool     Member      { get; set; } = false;  // not nullable
 
         //  c o n s t r u c t o r s 
         //  m e t h o d s

@@ -12,9 +12,12 @@ namespace QuantumWiki16.Models
 
         public IQueryable<User> GetAllUsers();
         public User GetUserById(int id);
-        public IQueryable<User> GetUserByKeyword(string keyword);
+        public IQueryable<User> GetUserByName(string keyword);
+        public User GetUserByEmail(string email);
         public bool Login(User u);
+        public void LoginAsGuest();
         public int GetUserBySessionId();
+        public bool IsMember();
 
         // U p d a t e
 

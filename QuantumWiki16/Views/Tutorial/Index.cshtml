@@ -1,1 +1,54 @@
-﻿<h1>This will be the tutorial list page</h1>
+﻿@model IQueryable<Tutorial>
+<!-- must implement paging here -->
+
+<h2>All Quantum Tutorials</h2>
+<div>
+    @foreach (Tutorial t in Model)
+    {
+        <table>
+            <tr>
+                <th> Title: </th>
+                <td><a href="@t.Url"> @t.Title </a></td>
+            </tr>
+            <tr>
+                <th> Subject: </th>
+                <td> @t.Subject</td>
+            </tr>
+            @if (UserRepo.GetUserBySessionId() > 0 && UserRepo.IsMember() == true)@*<!--  if they are a member -->*@
+            {
+                <tr>
+                    <th> </th>
+                    <td><a class="alert-primary" asp-controller="Tutorial" asp-action="Edit" asp-route-tutid="@t.TutId">Edit</a></td>
+                </tr>
+                <tr>
+                    <th> </th>
+                    <td><a class="alert-danger" asp-controller="Tutorial" asp-action="Delete" asp-route-tutid="@t.TutId">Delete</a></td>
+                </tr>
+            }
+        </table>
+    }
+</div>
+<div>
+    <button><a asp-controller="Home" asp-action="Index" />Return the WikiHome</button>
+</div>
+@if (UserRepo.IsMember())@*<!--  if they are a member -->*@
+{
+    <div>
+        <button><a asp-controller="Tutorial" asp-action="Add" />Add a Tutorial</button>
+    </div>
+    <div>
+        <button><a asp-controller="Code" asp-action="Index" /> Code from other members </button>
+    </div>
+}
+<div>
+    <h2>Search Tutorials by: </h2>
+</div>
+<div>
+    <button><a asp-controller="Tutorial" asp-action="SearchBySubject" />Subject</button>
+</div>
+<div>
+    <button><a asp-controller="Tutorial" asp-action="SearchByTitle" />Title</button>
+</div>
+<div>
+    <button><a asp-controller="Tutorial" asp-action="SearchById" />Id</button>
+</div>

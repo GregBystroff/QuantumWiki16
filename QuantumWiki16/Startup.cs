@@ -30,6 +30,7 @@ namespace QuantumWiki16
 
             services.AddScoped<IUserRepository, EfUserRepository>();
             services.AddScoped<ITutorialRepository, EfTutorialRepository>();
+            services.AddScoped<ICodeRepository, EfCodeRepository>();
 
             services.AddControllersWithViews();
             services.AddAuthenticationCore();

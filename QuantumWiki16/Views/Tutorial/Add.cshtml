@@ -1,0 +1,31 @@
+﻿@model Tutorial
+
+<h3>Add a Tutorial</h3>
+
+<form asp-action="Add" method="post">
+    <input type="hidden" asp-for="UserId" value="@UserRepo.GetUserBySessionId()" />
+    <table>
+        <tr>
+            <th> Title: </th>
+            <td>
+                <input type="text" asp-for="Title" />
+            </td>
+        </tr>
+        <tr>
+            <th> Subject: </th>
+            <td>
+                <input type="text" asp-for="Subject" />
+            </td>
+        </tr>
+        <tr>
+            <th> Link: </th>
+            <td>
+                <input type="url" asp-for="Url" />
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td> <input type="submit" value="Add" /> </td>
+        </tr>
+    </table>
+</form>

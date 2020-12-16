@@ -1,0 +1,31 @@
+﻿@model Code
+
+<h3> Share your Genius </h3>
+
+<form asp-action="Add" method="post">
+    <input type="hidden" asp-for="Id" value="@UserRepo.GetUserBySessionId()" />
+    <table>
+        <tr>
+            <th> Title: </th>
+            <td>
+                <input type="text" asp-for="Title" />
+            </td>
+        </tr>
+        <tr>
+            <th> Description: </th>
+            <td>
+                <input textarea asp-for="Description" />
+            </td>
+        </tr>
+        <tr>
+            <th> Code: </th>
+            <td>
+                <input textarea asp-for="CodeSegment" />
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <td> <input type="submit" value="Add" /> </td>
+        </tr>
+    </table>
+</form>

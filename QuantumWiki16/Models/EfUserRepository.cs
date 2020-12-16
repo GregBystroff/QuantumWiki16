@@ -32,13 +32,12 @@ namespace QuantumWiki16.Models
                 _context.Users.Add(user);  // method in base class of appDbContext
                 _context.SaveChanges();  // same
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 user.Id = -1;  // failed to add, that user object gets a bad Id - will fail to update. Must be deleted and re-entered.
             }
             user.Password = ""; // get rid of pw immediately either way
             return user;
-
         }
 
         // R e a d
@@ -53,7 +52,7 @@ namespace QuantumWiki16.Models
             return _context.Users.Find(id);
         }
 
-        public IQueryable<User> GetUserByKeyword(string keyword)
+        public IQueryable<User> GetUserByName(string keyword)
         {
             return _context.Users.Where(u => u.Name.Contains(keyword));
         }  // end get User By keyword
@@ -67,38 +66,50 @@ namespace QuantumWiki16.Models
         {
             User knownUser = GetUserByEmail(u.Email);
 
-            if (knownUser == null)
+            if (knownUser == null)  // no user by that email
             {
-                return false;
+                return false;  // failed to log in
             }
-
+            // otherwise, have valid user and continue with login
             u.Password = encrypt(u.Password);
 
             if (knownUser.Password == u.Password)
             {
                 _session.SetInt32("userId", knownUser.Id);
                 _session.SetString("userEmail", knownUser.Email);
-                //if (knownUser.IsAdmin)
-                //{
-                //    _session.SetInt32("userAdmin", 1);
-                //}
-                //else
-                //{
-                //    _session.SetInt32("userAdmin", 0);
-                //}
+                _session.SetString("member", knownUser.Member.ToString());
                 return true;
             }
-
-            return false;
+            return false;  // password mismatch
         }  // end Login
+
+        public void LoginAsGuest()
+        {
+            _session.SetInt32("userId", 0);
+            _session.SetString("userEmail", "guest@quantumwiki.com");
+            _session.SetString("member", "false");
+        }  // end Login as Guest
+
+        public bool IsMember()
+        {
+            int id = _session.GetInt32("userId").Value;  // session will return some int
+            User u;
+            if (id > 0) // all but guests // did not get a null user
+            {
+                    u = _context.Users.Find(GetUserBySessionId());  // did they select membership?
+                    return u.Member;
+                }
+              // null and guests get false
+            return false;
+        }  // is member // now accounts for guests
 
         public int GetUserBySessionId()
         {
             int? currentUserId = _session.GetInt32("userId");
-            if(currentUserId != null)
+            if (currentUserId != null)
             {
                 return currentUserId.Value;
-            }    
+            }
             return -1;
         }  // end Get user by Session
 
@@ -176,7 +187,7 @@ namespace QuantumWiki16.Models
         {
             _session.Remove("userEmail");
             _session.Remove("userId");
- //           _session.Remove("userAdmin");
+            _session.Remove("member");
         }  // end Logout
     }
 }

@@ -11,8 +11,9 @@ namespace QuantumWiki16.Models
     {
         //   F i e l d s   &   P r o p e t r i e s
 
-        public DbSet<User> Users { get; set; }
-        public DbSet<Tutorial> Tutorials { get; set; }
+        public DbSet<User>      Users       { get; set; }
+        public DbSet<Tutorial>  Tutorials   { get; set; }
+        public DbSet<Code>      Codes       { get; set; }
 
         //   C o n s t r u c t o r s
 
